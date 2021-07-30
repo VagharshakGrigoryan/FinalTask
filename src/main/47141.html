@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div style="width: 800px ">
+    <div style="width: 50%; float: left">
+        <form action="${pageContext.request.contextPath}/userRegister" method="post">
+            <br>
+            name:<label>
+            <input type="text" name="name" placeholder="name">
+        </label> <br>
+            surname:<label>
+            <input type="text" name="surname" placeholder="surname">
+        </label><br>
+            email: <label>
+            <input type="text" name="email" placeholder="email">
+        </label><br>
+            password: <label> <input type="password" name="password" placeholder="password"></label>
+            <label>
+                <select name="type">
+                    <option value="USER">USER</option>
+                    <option value="MANAGER">MANAGER</option>
+                </select>
+            </label>
+            <<input type="submit" value="Register"><br>
+        </form>
+    </div>
+    <div style="width: 50%; float: right ">
+        Ad Task<br>
+        <form action="${pageContext.request.contextPath}/adTask" method="post">
+            name:<label>
+            <input type="text" name="name" placeholder="name">
+        </label><br>
+            description:<label>
+            <textarea name="description"  placeholder="description"></textarea>
+        </label><br>
+        deadline:<label>
+        <input type="datetime-local" name="deadline">
+    </label><br>
+        <label>
+            <select name="status">
+                <option value="NEW">NEW</option>
+                <option value="IN_PROGRESS">IN_PROGRES</option>
+                <option value="FINISHED">FINISHED</option>
+            </select>
+        </label><br>
+        <label>
+            <select name="user_id">
+                <%
+                for (User user : users) {%>
+                <option value="<%=user.getId()%>"><%=user.getName()%> <%=user.getSurname()%>
+                </option>
+                <% }
+
+                %>
+            </select>
+        </label><br>
+
+        <input type="submit" value="add task">
+</form>
+    </div>
+
+
+
+</div>
+</body>
+</html>
